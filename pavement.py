@@ -47,6 +47,7 @@ def script(name, *lines):
 
 @task
 def scripts():
+    "Creates utility scripts for manage.py, run local server and test runner"
     script('manage',
            "$ME/../bin/python $ME/../%s/manage.py $@" % meta.name)
     script('run',
@@ -66,6 +67,7 @@ def env():
 @needs('dropdb')
 @task
 def clean():
+    "Removes ALL locally generated files"
     path('bin').rmtree()
     path('lib').rmtree()
     path('include').rmtree()
