@@ -26,6 +26,11 @@ setup(
 )
 
 @task
+def dropdb():
+    "Drops the local development database"
+    path('var/dev.db').remove()
+
+@task
 def virtualenv():
     "Prepares a checked out directory for development"
     if not os.path.exists(os.path.join('bin', 'pip')):
@@ -58,6 +63,7 @@ def env():
     sh('./bin/pip install -r deps/run.txt')
     sh('./bin/pip install -r deps/developer.txt')
 
+@needs('dropdb')
 @task
 def clean():
     path('bin').rmtree()
