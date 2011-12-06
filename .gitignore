@@ -9,3 +9,4 @@ src/
 .Python
 *.egg
 *.db
+*.log
