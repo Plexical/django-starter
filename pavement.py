@@ -36,6 +36,23 @@ def scripts():
            "./bin/python %s/manage.py test %s $@)" % (meta.name,
                                                       meta.name) )
 
+@task
+def watch():
+    sh('compass watch --sass-dir=scss --css-dir=static/css &')
+    # sh('coffee -cwlo static/js coffee/ &')
+
+@task
+def unwatch():
+    sed = 'sed \'/bin\/coffee/p; /grep/d;\''
+    awk = 'awk \'{print $1}\''
+    sh("ps | grep coffee | %s | %s | xargs kill -TERM" % (sed, awk))
+    sed = 'sed \'/bin\/compass/p; /grep/d;\''
+    sh('ps | grep compass | %s | %s | xargs kill -TERM' % (sed, awk))
+
+@needs('unwatch', 'watch')
+def rewatch():
+    pass
+
 @needs('scripts')
 @task
 def env():
