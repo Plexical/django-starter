@@ -19,8 +19,8 @@ from develop import *
 MANAGERS = ADMINS
 
 LANGUAGES = [('en', t('English')),
-             ('sv', t('Swedish')),
-             ('es', t('Spanish'))]
+             ('sv', t('Svenska')),
+             ('es', t('Castellano'))]
 DEFAULT_LANGUAGE = 0
 
 # Local time zone for this installation. Choices can be found here:
