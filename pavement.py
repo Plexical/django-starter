@@ -39,7 +39,8 @@ def scripts():
     script('manage',
            "$ME/../bin/python $ME/../%s/manage.py $@" % meta.name)
     script('run',
-           "$ME/../bin/python $ME/../%s/manage.py runserver $@" % meta.name)
+           ("$ME/../bin/python $ME/../%s/manage.py runserver 0.0.0.0:8000 $@" %
+            meta.name))
     script('test',
            "(cd $ME/.. &&",
            "./bin/python %s/manage.py test %s $@)" % (meta.name,
