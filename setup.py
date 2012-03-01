@@ -14,13 +14,12 @@ try:
 except ImportError:
     from distutils.core import setup
 
-if 'virtualenv' in sys.argv:
+if 'boot' in sys.argv:
     if not os.path.exists(os.path.join('bin', 'pip')):
         sys.path.insert(0, os.path.join('deps', 'virtualenv.zip'))
         import virtualenv
         print('Creating virtualenv..')
         virtualenv.create_environment('.')
-        print('  ..installing Paver')
         subprocess.call('./bin/pip install paver', shell=True)
         print('done.')
     else:
