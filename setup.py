@@ -38,8 +38,7 @@ setup(
     version=meta.version,
     author='Jacob Oscarson',
     author_email='jacob@plexical.com',
-    install_requires=open(os.path.join('deps',
-                                       'run.txt')).readlines()
+    install_requires=open('requirements.txt')).readlines()
 )
 
 try:
