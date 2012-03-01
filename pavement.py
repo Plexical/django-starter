@@ -58,7 +58,7 @@ def rewatch():
 def env():
     "Ensure virtualenv exists and is up to date"
     sh('./bin/pip install -r requirements.txt')
-    sh('./bin/pip install -r deps/developer.txt')
+    sh('./bin/pip install -r development.txt')
 
 @needs('dropdb')
 @task

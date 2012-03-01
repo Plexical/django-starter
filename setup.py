@@ -16,7 +16,7 @@ except ImportError:
 
 if 'boot' in sys.argv:
     if not os.path.exists(os.path.join('bin', 'pip')):
-        sys.path.insert(0, os.path.join('deps', 'virtualenv.zip'))
+        sys.path.insert(0, 'virtualenv.zip')
         import virtualenv
         print('Creating virtualenv..')
         virtualenv.create_environment('.')
@@ -38,7 +38,7 @@ setup(
     version=meta.version,
     author='Jacob Oscarson',
     author_email='jacob@plexical.com',
-    install_requires=open('requirements.txt')).readlines()
+    install_requires=open('requirements.txt').readlines()
 )
 
 try:
