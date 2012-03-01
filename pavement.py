@@ -8,6 +8,12 @@ import sys
 
 from paver.easy import *
 
+try:
+    from starter import meta
+except ImportError:
+    sys.path.append('.')
+    from starter import meta
+
 @task
 def dropdb():
     "Drops the local development database"
