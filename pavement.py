@@ -7,38 +7,11 @@ import os
 import sys
 
 from paver.easy import *
-from paver.setuputils import setup
-
-try:
-    from starter import meta
-except ImportError:
-    sys.path.append('.')
-    from starter import meta
-
-setup(
-    name=meta.name,
-    packages=(meta.name),
-    version=meta.version,
-    author='Jacob Oscarson',
-    author_email='jacob@plexical.com',
-    install_requires=open(os.path.join('deps',
-                                       'run.txt')).readlines()
-)
 
 @task
 def dropdb():
     "Drops the local development database"
     path('var/dev.db').remove()
-
-@task
-def virtualenv():
-    "Prepares a checked out directory for development"
-    if not os.path.exists(os.path.join('bin', 'pip')):
-        sys.path.insert(0, os.path.join('deps', 'virtualenv.zip'))
-        import virtualenv
-        virtualenv.create_environment('.')
-    else:
-        print('Virtualenv already set up')
 
 def script(name, *lines):
     path('bin/%s' % name).write_lines(
@@ -57,7 +30,7 @@ def scripts():
            "./bin/python %s/manage.py test %s $@)" % (meta.name,
                                                       meta.name) )
 
-@needs('virtualenv', 'scripts')
+@needs('scripts')
 @task
 def env():
     "Ensure virtualenv exists and is up to date"

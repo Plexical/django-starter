@@ -1,10 +1,50 @@
-import sys
+# -*- coding: utf-8 -*-
+"""
+Installs <Django Project Name>
+------------------------------
+
+Copyright 2011 Plexical. See LICENCE for permissions.
+"""
 import os
+import sys
+import subprocess
+
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
+
+if 'virtualenv' in sys.argv:
+    if not os.path.exists(os.path.join('bin', 'pip')):
+        sys.path.insert(0, os.path.join('deps', 'virtualenv.zip'))
+        import virtualenv
+        print('Creating virtualenv..')
+        virtualenv.create_environment('.')
+        print('  ..installing Paver')
+        subprocess.call('./bin/pip install paver', shell=True)
+        print('done.')
+    else:
+        print('Virtualenv already set up')
+    sys.exit(0)
+
+try:
+    from starter import meta
+except ImportError:
+    sys.path.append('.')
+    from starter import meta
+
+setup(
+    name=meta.name,
+    packages=(meta.name),
+    version=meta.version,
+    author='Jacob Oscarson',
+    author_email='jacob@plexical.com',
+    install_requires=open(os.path.join('deps',
+                                       'run.txt')).readlines()
+)
 
 try:
     import paver
+    from pavement import *
 except ImportError:
-    sys.path.insert(0, os.path.join('deps', 'paver-minilib.zip'))
-
-import paver.tasks
-paver.tasks.main()
+    pass
