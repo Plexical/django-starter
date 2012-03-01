@@ -34,7 +34,7 @@ def scripts():
 @task
 def env():
     "Ensure virtualenv exists and is up to date"
-    sh('./bin/pip install -r deps/run.txt')
+    sh('./bin/pip install -r requirements.txt')
     sh('./bin/pip install -r deps/developer.txt')
 
 @needs('dropdb')
