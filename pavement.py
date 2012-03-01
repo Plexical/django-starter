@@ -19,6 +19,15 @@ def dropdb():
     "Drops the local development database"
     path('var/dev.db').remove()
 
+@task
+def syncdb():
+    sh('./bin/manage syncdb --noinput')
+
+@needs('dropdb')
+@task
+def freshdb():
+    syncdb()
+
 def script(name, *lines):
     path('bin/%s' % name).write_lines(
         ("#!/bin/sh", "ME=$(dirname $0)") + lines)
