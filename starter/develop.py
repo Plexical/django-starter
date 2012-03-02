@@ -47,6 +47,7 @@ Relevant place to put development environment specific installed apps.
 """
 EXTRA_APPS = (
     'django_pytest',
+    'werkzeug_debugger_runserver'
 )
 
 TEST_RUNNER = 'django_pytest.test_runner.run_tests'
