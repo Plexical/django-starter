@@ -7,6 +7,9 @@ import os
 gettext = lambda s: s
 t = gettext
 
+ENV = 'dev'
+HOST = 'localhost'
+
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 # if is staging:
@@ -15,6 +18,8 @@ PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
 #     from live import *
 # else:
 from develop import *
+
+PORT = ENV == 'dev' and ':8000' or ''
 
 MANAGERS = ADMINS
 
