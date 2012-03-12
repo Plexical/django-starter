@@ -6,7 +6,7 @@ import os
 
 from starter.settings import *
 
-ENV = 'stage'
+ENV = 'live'
 
 SECRET_KEY = 'T' # XXX must fill in
 

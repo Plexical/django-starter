@@ -7,14 +7,21 @@ Copyright 2011-2012 Plexical. See LICENCE for permissions.
 
 import os
 
-PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
+from starter.settings import *
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+"""
+This server's own opinion of it's name.
+"""
+INSTANCE_URL = 'http://localhost:8000'
+
 ADMINS = (
     ('Jacob Oscarson', 'jacob@plexical.com'),
 )
+
+MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
@@ -45,7 +52,7 @@ SECRET_KEY = 'my-supersecret-developer-key'
 Per environment specific apps.
 Relevant place to put development environment specific installed apps.
 """
-EXTRA_APPS = (
+INSTALLED_APPS = BASE_INSTALLED_APPS + (
     'django_pytest',
     'werkzeug_debugger_runserver'
 )
