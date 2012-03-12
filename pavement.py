@@ -46,8 +46,8 @@ def scripts():
     script('test',
            "(cd $ME/.. &&",
            "./bin/python %s/manage.py test %s "
-           " --settings=starter.develop $@)" % (meta.name,
-                                                meta.name) )
+           "--settings=starter.develop $@)" % (meta.name,
+                                               meta.name) )
 
 @task
 def watch():
