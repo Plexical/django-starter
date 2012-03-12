@@ -37,14 +37,17 @@ def script(name, *lines):
 def scripts():
     "Creates utility scripts for manage.py, run local server and test runner"
     script('manage',
-           "$ME/../bin/python $ME/../%s/manage.py $@" % meta.name)
+           "$ME/../bin/python $ME/../%s/manage.py $@ "
+           "--settings=starter.develop" % meta.name)
     script('run',
-           ("$ME/../bin/python $ME/../%s/manage.py runserver 0.0.0.0:8000 $@" %
+           ("$ME/../bin/python $ME/../%s/manage.py "
+            "runserver --settings=starter.develop 0.0.0.0:8000 $@" %
             meta.name))
     script('test',
            "(cd $ME/.. &&",
-           "./bin/python %s/manage.py test %s $@)" % (meta.name,
-                                                      meta.name) )
+           "./bin/python %s/manage.py test %s "
+           " --settings=starter.develop $@)" % (meta.name,
+                                                meta.name) )
 
 @task
 def watch():

@@ -10,18 +10,11 @@ t = gettext
 ENV = 'dev'
 HOST = 'localhost'
 
+TEMPLATING = True
+
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
 
-# if is staging:
-#     from stage import *
-# elif is live:
-#     from live import *
-# else:
-from develop import *
-
 PORT = ENV == 'dev' and ':8000' or ''
-
-MANAGERS = ADMINS
 
 LANGUAGES = [('en', t('English')),
              ('sv', t('Svenska')),
@@ -126,8 +119,6 @@ BASE_INSTALLED_APPS = (
     'south',
     'starter'
 )
-
-INSTALLED_APPS = BASE_INSTALLED_APPS + EXTRA_APPS
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
