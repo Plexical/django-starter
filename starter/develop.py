@@ -4,13 +4,14 @@ Local development settings.
 
 Copyright 2011-2012 Plexical. See LICENCE for permissions.
 """
-
 import os
 
 from starter.settings import *
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+ENV = 'dev'
 
 """
 This server's own opinion of it's name.

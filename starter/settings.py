@@ -7,14 +7,9 @@ import os
 gettext = lambda s: s
 t = gettext
 
-ENV = 'dev'
-HOST = 'localhost'
-
 TEMPLATING = True
 
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
-
-PORT = ENV == 'dev' and ':8000' or ''
 
 LANGUAGES = [('en', t('English')),
              ('sv', t('Svenska')),
