@@ -47,3 +47,7 @@ def test_admin_sane(client):
     dom = BeautifulSoup(res.content)
     assert (dom.findAll('h1', id='site-name')[0].text ==
             'Django administration')
+
+def test_static_present(client):
+    res = client.get('/static/ping-top.txt')
+    assert 'Static assets reachable.' in res.content
