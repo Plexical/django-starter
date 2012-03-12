@@ -1,5 +1,7 @@
 import pytest
 
+from BeautifulSoup import BeautifulSoup
+
 def setup_module(mod):
     from starter import settings
     mod.templating = getattr(settings, 'TEMPLATING', False)
