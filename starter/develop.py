@@ -13,6 +13,12 @@ TEMPLATE_DEBUG = DEBUG
 
 ENV = 'dev'
 
+ADMINS = (
+    ('Foo Bar', 'foo@example.com'),
+)
+
+MANAGERS = ADMINS
+
 """
 This server's own opinion of it's name.
 """

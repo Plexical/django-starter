@@ -11,6 +11,12 @@ TEMPLATE_DEBUG = DEBUG
 
 ENV = 'live'
 
+ADMINS = (
+    ('Foo Bar', 'foo@example.com'),
+)
+
+MANAGERS = ADMINS
+
 SECRET_KEY = 'T' # XXX must fill in
 
 """
