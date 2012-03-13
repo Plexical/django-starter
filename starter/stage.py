@@ -6,6 +6,9 @@ import os
 
 from starter.settings import *
 
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
+
 ENV = 'stage'
 
 SECRET_KEY = 'T' # XXX must fill in
