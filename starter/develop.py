@@ -32,10 +32,13 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
+        # 'ENGINE': 'django.contrib.gis.db.backends.spatialite',
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': path(PROJECT_DIR, '..', 'var', 'dev.db'),
     }
 }
+
+# SPATIALITE_LIBRARY_PATH = '/Library/Frameworks/SQLite3.framework/SQLite3'
 
 """
 Absolute filesystem path to the directory that will hold user-uploaded files.
