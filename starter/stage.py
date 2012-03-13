@@ -19,6 +19,19 @@ MANAGERS = ADMINS
 
 SECRET_KEY = 'T' # XXX must fill in
 
+DATABASES = {
+    'default': {
+        # 'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'xxx',
+        'USER': 'xxx',
+        'PASSWORD': 'xxx',
+        'OPTIONS': {
+            'autocommit': True,
+            }
+    }
+}
+
 """
 This server's own opinion of it's name.
 """
