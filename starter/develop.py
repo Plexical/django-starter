@@ -27,8 +27,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.abspath(os.path.join(PROJECT_DIR,
-                                             '..', 'var', 'dev.db')),
+        'NAME': path(PROJECT_DIR, '..', 'var', 'dev.db'),
     }
 }
 
@@ -36,12 +35,12 @@ DATABASES = {
 Absolute filesystem path to the directory that will hold user-uploaded files.
 Example: `"/home/media/media.lawrence.com/`
 """
-MEDIA_ROOT = os.path.join(PROJECT_DIR, '..', 'static', 'media')
+MEDIA_ROOT = path(PROJECT_DIR, '..', 'static', 'media')
 
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+STATIC_ROOT = path(PROJECT_DIR, 'static')
 
 STATICFILES_DIRS = (
-    os.path.abspath(os.path.join(PROJECT_DIR, '..', 'static')),
+    path(PROJECT_DIR, '..', 'static'),
 )
 
 """

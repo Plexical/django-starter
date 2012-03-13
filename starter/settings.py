@@ -4,12 +4,14 @@ Copyright 2011-2012 Plexical. See LICENCE for permissions.
 """
 import os
 
+from shortcuts import path
+
 gettext = lambda s: s
 t = gettext
 
 TEMPLATING = True
 
-PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
+PROJECT_DIR = path(os.path.dirname(__file__))
 
 LANGUAGES = [('en', t('English')),
              ('sv', t('Svenska')),
