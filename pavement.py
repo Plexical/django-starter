@@ -52,7 +52,7 @@ def scripts():
 @task
 def watch():
     sh('compass watch --sass-dir=scss --css-dir=static/css &')
-    # sh('coffee -cwlo static/js coffee/ &')
+    sh('coffee -cwl static/js/ &')
 
 @task
 def unwatch():
