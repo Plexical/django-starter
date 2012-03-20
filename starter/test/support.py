@@ -8,6 +8,7 @@ run_template = lambda t, **kw: Template(t).render(Context(kw))
 soup_template = lambda t, **kw: BeautifulSoup(run_template(t, **kw))
 
 def render_raw(name, **ctx):
+    from sekizai.context import SekizaiContext
     return loader.render_to_string(name, SekizaiContext(ctx))
 
 def render_to_soup(name, **ctx):
