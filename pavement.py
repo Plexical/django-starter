@@ -21,11 +21,13 @@ def dropdb():
 
 @task
 def syncdb():
+    "Runs syncdb"
     sh('./bin/manage syncdb --noinput')
 
 @needs('dropdb')
 @task
 def freshdb():
+    "Re-creates the development database"
     syncdb()
 
 def script(name, *lines):
@@ -51,11 +53,13 @@ def scripts():
 
 @task
 def watch():
+    "Watch for SASS and CoffeeScript"
     sh('compass watch --sass-dir=scss --css-dir=static/css &')
     sh('coffee -cwl static/js/ &')
 
 @task
 def unwatch():
+    "Stop SASS and CoffeeScript watchers"
     sed = 'sed \'/bin\/coffee/p; /grep/d;\''
     awk = 'awk \'{print $1}\''
     sh("ps | grep coffee | %s | %s | xargs kill -TERM" % (sed, awk))
@@ -64,6 +68,7 @@ def unwatch():
 
 @needs('unwatch', 'watch')
 def rewatch():
+    "Restarts SASS and CoffeeScript watchers"
     pass
 
 @needs('scripts')
