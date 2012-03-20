@@ -10,9 +10,11 @@ from paver.easy import *
 
 try:
     from starter import meta
+    import ops
 except ImportError:
     sys.path.append('.')
     from starter import meta
+    import ops
 
 @task
 def dropdb():
@@ -70,6 +72,16 @@ def unwatch():
 def rewatch():
     "Restarts SASS and CoffeeScript watchers"
     pass
+
+@task
+def messages():
+    path = ops.software('gettext')
+    sh("cd starter && %s ../bin/manage makemessages -a" % path)
+
+@task
+def translate():
+    path = ops.software('gettext')
+    sh("cd starter && %s ../bin/manage compilemessages" % path)
 
 @needs('scripts')
 @task
