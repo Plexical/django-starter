@@ -6,8 +6,7 @@ import os
 
 from shortcuts import path
 
-gettext = lambda s: s
-t = gettext
+_ = lambda s: s
 
 TEMPLATING = True
 
