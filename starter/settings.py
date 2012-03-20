@@ -12,9 +12,9 @@ TEMPLATING = True
 
 PROJECT_DIR = path(os.path.dirname(__file__))
 
-LANGUAGES = [('en', t('English')),
-             ('sv', t('Svenska')),
-             ('es', t('Castellano'))]
+LANGUAGES = [('en', 'English'),
+             ('sv', 'Svenska'),
+             ('es', 'Castellano')]
 DEFAULT_LANGUAGE = 0
 
 # Local time zone for this installation. Choices can be found here:
