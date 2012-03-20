@@ -17,7 +17,7 @@ def pytest_generate_tests(metafunc):
                 uri = attrs.get('src') or attrs.get('href')
                 if uri and uri.startswith('/static'):
                     yield uri
-        metafunc.parametrize('base_uri', list(walk(base)))
+        metafunc.parametrize('base_uri', walk(base))
 
 def test_base_sanity(base):
     assert base.find(text=re.compile('marker')) == ' marker '
