@@ -6,3 +6,8 @@
   text-align: center;
   background-color: lightgrey;
 }
+
+/* line 11, ../../scss/starter.scss */
+#dummy {
+  background-image: url(/static/images/dot.png);
+}
