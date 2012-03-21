@@ -10,3 +10,4 @@ src/
 *.egg
 *.db
 *.log
+.sass-cache/

@@ -1,0 +1,9 @@
+$background: lightgrey;
+$spaced: 5px;
+
+#starter {
+  border: 1px solid black;
+  width: 200px;
+  padding: $spaced;
+  text-align: center;
+  background-color: $background; }
