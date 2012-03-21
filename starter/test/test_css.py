@@ -21,7 +21,7 @@ def uris(css):
 
 def stylesheets():
     from django.conf import settings
-    return glob(path(settings.STATIC_ROOT, '..', '..', 'static', 'css', '*')) # XXX
+    return glob(path(settings.STATICFILES_DIRS[0], 'css', '*'))
 
 def pytest_generate_tests(metafunc):
     if 'resinfo' in metafunc.funcargnames:
