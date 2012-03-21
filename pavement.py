@@ -52,23 +52,47 @@ def scripts():
            "./bin/python %s/manage.py test %s "
            "--settings=starter.develop $@)" % (meta.name,
                                                meta.name) )
+    script('bundle',
+           "(cd $ME/.. &&",
+           "./bin/paver bundle)")
 
+@task
+def compass():
+    ops.check('compass version')
+    sh('compass compile --sass-dir=scss --css-dir=static/css')
+
+@task
+def coffee():
+    ops.check('coffee -v')
+    sh('coffee -cl static/js/')
+
+@task
+def wr_installed():
+    ops.check('wr -V')
+
+@needs('wr_installed')
 @task
 def watch():
     "Watch for SASS and CoffeeScript"
-    ops.check('compass version')
-    sh('compass watch --sass-dir=scss --css-dir=static/css &')
-    ops.check('coffee -v')
-    sh('coffee -cwl static/js/ &')
+    sh("(cd scss && wr ../bin/bundle) &")
+    sh("(cd static && wr ../bin/bundle) &")
+
+@needs('compass', 'coffee')
+@task
+def transpile():
+    "Run SASS and coffeescript compilers"
+
+@needs('transpile')
+@task
+def bundle():
+    "Bundle Js /w browserify"
+    # Example
+    sh('browserify -e static/js/starter.js -o static/js/starter.bundle.js')
 
 @task
 def unwatch():
     "Stop SASS and CoffeeScript watchers"
-    sed = 'sed \'/bin\/coffee/p; /grep/d;\''
-    awk = 'awk \'{print $1}\''
-    sh("ps | grep coffee | %s | %s | xargs kill -TERM" % (sed, awk))
-    sed = 'sed \'/bin\/compass/p; /grep/d;\''
-    sh('ps | grep compass | %s | %s | xargs kill -TERM' % (sed, awk))
+    sh("ps | grep wr | sed '/grep/d' | awk '{print $1}' | xargs kill -TERM")
 
 @needs('unwatch', 'watch')
 def rewatch():
