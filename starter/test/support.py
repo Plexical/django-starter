@@ -23,3 +23,10 @@ def fake_get(path='/', user=None):
     req.current_page = 'dummy'
 
     return req
+
+def resource_walk(dom):
+    for node in dom.recursiveChildGenerator():
+        attrs = dict(getattr(node, 'attrs', {}))
+        uri = attrs.get('src') or attrs.get('href')
+        if uri and uri.startswith('/static'):
+            yield uri
