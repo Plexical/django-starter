@@ -14,6 +14,10 @@ def have(name):
     return ('command not found' not in
             sh(name, capture=True, ignore_error=True) )
 
+def check(name):
+    if not have(name):
+        raise DependencyNeeded('Please install %s first' % name)
+
 def software(name):
     def missing():
         raise DependencyNeeded('Please install %s first '

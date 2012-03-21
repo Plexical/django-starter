@@ -56,7 +56,9 @@ def scripts():
 @task
 def watch():
     "Watch for SASS and CoffeeScript"
+    ops.check('compass version')
     sh('compass watch --sass-dir=scss --css-dir=static/css &')
+    ops.check('coffee -v')
     sh('coffee -cwl static/js/ &')
 
 @task
