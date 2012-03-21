@@ -24,10 +24,6 @@ This server's own opinion of it's name.
 """
 INSTANCE_URL = 'http://localhost:8000'
 
-ADMINS = (
-    ('Jacob Oscarson', 'jacob@plexical.com'),
-)
-
 MANAGERS = ADMINS
 
 DATABASES = {
