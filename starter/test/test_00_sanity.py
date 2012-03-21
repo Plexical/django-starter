@@ -39,7 +39,6 @@ def test_installed_apps(app):
 def test_installation_sane(client):
     res = client.get('/')
     assert res.status_code == 200
-    assert res.content == 'Starter app up'
 
 def test_admin_sane(client):
     res = client.get('/admin/')
