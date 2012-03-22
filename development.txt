@@ -8,3 +8,4 @@ Werkzeug
 django-werkzeug-debugger-runserver
 paver
 -e git+git@github.com:Plexical/django-pytest.git#egg=django_pytest
+altered.states>=0.8.1
