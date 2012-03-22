@@ -31,7 +31,7 @@ def test_obligatory(settings, obligatory):
     setting = getattr(settings, obligatory, False)
     if setting == 'T' and templating:
         pytest.skip('Skipping obligatory setting, in template mode')
-    assert setting
+    assert setting and setting != 'T'
 
 def test_installed_apps(app):
     assert __import__(app)
